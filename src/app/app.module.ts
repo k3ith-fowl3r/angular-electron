@@ -13,11 +13,14 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
+import { MessageService } from './providers/message.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +31,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
-    WebviewDirective
+    WebviewDirective,
+    DashboardComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
